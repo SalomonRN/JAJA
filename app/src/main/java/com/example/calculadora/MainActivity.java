@@ -2,6 +2,7 @@ package com.example.calculadora;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,18 +24,22 @@ public class MainActivity extends AppCompatActivity {
     private Button fact;
     private EditText num1;
     private EditText num2;
+    private TextView name;
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent i = getIntent();
-        i.getStringExtra("name");
-        
+
+
+        name = findViewById(R.id.name);
 
         num1 = findViewById(R.id.dato1);
         num2 = findViewById(R.id.dato2);
+
         sum = findViewById(R.id.button);
         res = findViewById(R.id.button2);
         mult = findViewById(R.id.button3);
@@ -43,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         suc = findViewById(R.id.button6);
         fact = findViewById(R.id.button7);
 
+
+        name.setText("Hola " + i.getStringExtra("name"));
 
         sum.setOnClickListener(view -> {
 
